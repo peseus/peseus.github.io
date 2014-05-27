@@ -1,0 +1,33 @@
+{
+	"site_name" : "peseus",
+	"copyright" : "2014",
+	"cates" : [{
+			"name" : "tech",
+			"text" : "技术"
+		}, {
+			"name" : "other",
+			"text" : "其他"
+		},
+	],
+	"articles" : [{
+			"title" : "加入github",
+			"file" : "2014-05-27_join-git",
+			"cate" : "other"
+		}
+	],
+	"links" : [{
+			"title" : "tonizhao",
+			"url" : "http://www.tonizhao.tk/"
+		}, {
+			"title" : "tenfyguo的技术专栏",
+			"url" : "http://blog.csdn.net/tenfyguo/"
+		}, {
+			"title" : "羊君碎碎念",
+			"url" : "http://lefengyang.github.io/"
+		}
+	],
+	"personal" : {
+		"avatar" : "/images/me.png",
+		"intro" : "peseus，毕业于西安交通大学。<br/>程序员@深圳。<br/>喜欢乒乓球，读书，游泳，爬山。<br/>就职于鹅厂，后台开发。<br/>常用开发语言 : C++ / PHP / JS 。<br/>关注架构设计与实现方案<br/><br/>联系我 : peseus#qq.com"
+	}
+}
