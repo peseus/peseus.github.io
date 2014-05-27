@@ -27,7 +27,7 @@
 		}
 	],
 	"personal" : {
-		"avatar" : "/images/me.png",
+		"avatar" : "/images/me.jpg",
 		"intro" : "peseus，毕业于西安交通大学。<br/>程序员@深圳。<br/>喜欢乒乓球，读书，游泳，爬山。<br/>就职于鹅厂，后台开发。<br/>常用开发语言 : C++ / PHP / JS 。<br/>关注架构设计与实现方案<br/><br/>联系我 : peseus#qq.com"
 	}
 }
