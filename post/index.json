@@ -5,6 +5,9 @@
 			"name" : "tech",
 			"text" : "技术"
 		}, {
+			"name" : "recruitment",
+			"text" : "招聘"
+		}, {
 			"name" : "other",
 			"text" : "其他"
 		}
