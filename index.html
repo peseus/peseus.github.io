@@ -2,7 +2,10 @@
 <html lang="zh-cn">
     <head>
         <meta charset="utf-8">
-
+		<script type="text/javascript">
+			var _speedMark = new Date();
+		</script>
+            
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -22,7 +25,7 @@
         <![endif]-->
 
 		<style>
-		.thread_img{width:100%;}
+		/*.thread_img{width:100%;} */
 		</style>
 
     </head>
@@ -96,7 +99,8 @@
 
 		<script id="tpl-person" type="text/template">
 			<h3>个人资料</h3>
-            <img src="{{avatar}}" class="thumbnail" />
+            <img src="{{avatar}}" class="thumbnail" style="border-radius:50%; overflow:hidden;"/>
+			<br />
 			<h6>{{{intro}}}</h6>
         </script>
 
@@ -195,6 +199,7 @@
             }
         </script>
         <script src="http://static.duoshuo.com/embed.js"></script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=34713505" charset="UTF-8"></script>
     </body>
 
 </html>
