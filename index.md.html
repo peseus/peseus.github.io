@@ -11,17 +11,17 @@
         <meta name="author" content="">
 
         <!-- Le styles -->
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/favicon.png" rel="shortcut icon">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="favicon.png" rel="shortcut icon">
 
-        <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="/css/skin.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/skin.css" rel="stylesheet">
 
         <!-- Highlight js stylesheet file -->
         <link rel="stylesheet" type="text/css" href="css/default.css"/>
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
-        <script src="/js/googlecode/html5.js"></script>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
 		<style>
@@ -35,10 +35,12 @@
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container-fluid">
+
+                        <a class="brand" href="#">首页</a>
                         <div class="nav-collapse">
                             <ul class="nav">
                                 {{#navlist}}
-                                <li><a href="{{&link}}">{{text}}</a></li>
+                                <li><a href="{{link}}">{{text}}</a></li>
                                 {{/navlist}}
                             </ul>
                         </div>
@@ -87,17 +89,17 @@
         <script id="tpl-sidebar" type="text/template">
             <ul class="nav nav-list">
                 {{#months}}
-	                <li class="nav-header">{{month}}</li>
-	                {{#articles}}
-	                	<li><a href="{{&link}}">{{text}}</a></li>
-	                {{/articles}}
+                <li class="nav-header">{{month}}</li>
+                {{#articles}}
+                <li><a href="#show/{{link}}">{{text}}</a></li>
+                {{/articles}}
                 {{/months}}
             </ul>
         </script>
 
 		<script id="tpl-person" type="text/template">
 			<h3>个人资料</h3>
-            <img src="{{&avatar}}" class="thumbnail" style="border-radius:50%; overflow:hidden;"/>
+            <img src="{{avatar}}" class="thumbnail" style="border-radius:50%; overflow:hidden;"/>
 			<br />
 			<h6>{{{intro}}}</h6>
         </script>
@@ -106,7 +108,7 @@
 			<h3>友情链接</h3>
             <ul class="nav nav-list">
                 {{#links}}
-                <li><a href="{{&url}}" target="_blank">{{title}}</a></li>
+                <li><a href="{{url}}" target="_blank">{{title}}</a></li>
                 {{/links}}
             </ul>
         </script>
@@ -116,11 +118,13 @@
                 <div class="span12">
                     <div class="pagination">
                         <ul>
-                            <li class="prev previous_page "><a href="/{{cate_tag}}/page-{{num_up}}.html">← </a></li>
+                            <li class="prev previous_page "><a href="#page/{{num_up}}">← </a></li>
                             {{#pages}}
-                                <li ><a href="/{{cate_tag}}/page-{{num}}.html">{{num}}</a></li>
+                                <li ><a href="#page/{{num}}">{{num}}</a></li>
                             {{/pages}}
-                            <li class="next next_page "><a rel="next" href="/{{cate_tag}}/page-{{num_next}}.html"> →</a></li>
+
+                            <li class="next next_page "><a rel="next" href="#page/{{num_next}}"> →</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -162,6 +166,10 @@
 
         </script>
 
+
+
+
+
         <div class="main-body">
         </div>
 
@@ -171,15 +179,17 @@
 
 
 
-        <script src="/js/json2.js"></script>
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/underscore-min.js"></script>
-        <script src="/js/mustache.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/showdown-min.js"></script>
-        <script src="/js/highlight/highlight.pack.js"></script>
-        <script src="/js/jquery.scrollUp.min.js"></script>
-        <script src="/js/blog_static.js?v=3"></script>
+        <script src="js/json2.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/backbone.js"></script>
+        <script src="js/mustache.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/showdown-min.js"></script>
+        <script src="js/highlight/highlight.pack.js"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+
+        <script src="js/blog.js"></script>
 
         <script>
            var duoshuoQuery = {short_name:"peseus"};

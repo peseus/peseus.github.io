@@ -99,7 +99,23 @@
                 <div class="row-fluid">
 
                     <div class="span9">
-                        <div class="row-fluid article-content"><h1 id="">如何查看进程详细启动时间</h1>
+                        <div class="row-fluid article-content"><h1 id="gccc">gcc/c++链接极简实践</h1>
+
+<h2 id="11">1.1    背景</h2>
+
+<p>常有同事被链接问题困扰，大部分是一些较常见的问题。链接这种问题，部分同事不太重视。这里做一些总结，相信可以解决这些同学80%的问题。</p>
+
+<h2 id="12">1.2    基础知识</h2>
+
+<h3 id="121">1.2.1    链接参数</h3>
+
+<ul>
+<li>-L <br>
+-L用于增加链接库的查找目录</li>
+<li>-I <br>
+-l 用于指定库文件，-lx表示链接libx.so或者libx.a</li>
+<li>-sta</li>
+</ul><br><p><a title="" class="btn btn-primary pull-left" href="/article/2014-07-01_linkage.html">继续阅读  →</a> </p><br> <br><div class="line_dashed"></div><h1 id="">如何查看进程详细启动时间</h1>
 
 <p>上周和贱贱一起定位nginx监听的端口和nginx配置不一致的问题，发现**ps -ef**命令不能输出进程启动详细时间，没有年份信息。这导致不能确定是配置修改在前，还是启动在前。那怎样才能得到精准的启动时间呢？</p><p>
 </p><p>通过百度找资料，发现通过ps axo能解决这个问题。ps axo comm,lstart命令的输出如下：</p>
@@ -133,10 +149,12 @@
         </div>
 						<div class="well sidebar-nav">
             <ul class="nav nav-list">
+	                <li class="nav-header">2014-07</li>
+	                	<li><a href="/article/2014-07-01_linkage.html">gcc/c++链接极简实践</a></li>
 	                <li class="nav-header">2014-06</li>
-	                	<li><a href="//article2014-06-13_precision_proc_time.html">如何查看进程精确启动时间</a></li>
+	                	<li><a href="/article/2014-06-13_precision_proc_time.html">如何查看进程精确启动时间</a></li>
 	                <li class="nav-header">2014-05</li>
-	                	<li><a href="//article2014-05-27_join-git.html">加入github</a></li>
+	                	<li><a href="/article/2014-05-27_join-git.html">加入github</a></li>
             </ul>
         </div>
                         <div class="well sidebar-comment">

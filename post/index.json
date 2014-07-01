@@ -13,6 +13,10 @@
 		}
 	],
 	"articles" : [{
+			"title": "gcc/c++链接极简实践", 
+			"file": "2014-07-01_linkage",
+			"cate": "tech"
+		}, {
 			"title": "如何查看进程精确启动时间", 
 			"file": "2014-06-13_precision_proc_time",
 			"cate": "tech"
