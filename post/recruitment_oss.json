@@ -1,0 +1,54 @@
+{"jobs": 
+	[{
+		"name": "高级Java工程师",
+		"url": "http://a.liepin.com/1075712/job_5027047.shtml",
+		"place": "上海",
+		"salary": "28-35万",
+		"company": "某大型B2C上市公司",
+		"uuid": "89ca21a1c1c83628b27602f325493cbb"
+	}, 
+	{
+		"name": "运维系统架构师",
+		"url": "http://a.liepin.com/1075712/job_5091516.shtml",
+		"place": "广州",
+		"salary": "30-45万",
+		"company": "某大型B2C上市公司",
+		"uuid": "513d202b4de154278af488e148425985"
+	},
+	{
+		"name": "高级PHP开发经理",
+		"url": "http://a.liepin.com/1075712/job_4853051.shtml",
+		"place": "广州",
+		"salary": "50-70万",
+		"company": "某大型B2C上市公司",
+		"uuid": "23225819b90b48f2037bebcc04549964"
+	}, {
+		"name": "搜索后端工程师",
+		"url": "http://a.liepin.com/1075712/job_4913619.shtml",
+		"place": "广州 ,上海",
+		"salary": "25-40万",
+		"company": "某大型B2C上市公司",
+		"uuid": "3bb8abd0fca0216e8d57b1181ef37ebf"
+	}, {
+		"name": "系统架构师 (运维方向)",
+		"url": "http://a.liepin.com/1075712/job_4853146.shtml",
+		"place": "广州",
+		"salary": "50-60万",
+		"company": "某大型B2C上市公司",
+		"uuid": "ead1f56d715cedb24c828dd87b694587"
+	}, {
+		"name": "搜索前端工程师",
+		"url": "http://a.liepin.com/1075712/job_4913715.shtml",
+		"place": "广州 ,上海",
+		"salary": "25-35万",
+		"company": "某大型B2C上市公司",
+		"uuid": "a857158d5a97f62369c137b8f2e0966a"
+	}, {
+		"name": "高级PHP开发工程师",
+		"url": "http://a.liepin.com/1075712/job_4773458.shtml",
+		"place": "北京 ,上海 ,广州",
+		"salary": "25-35万",
+		"company": "某大型B2C上市公司",
+		"uuid": "a4af70b5a97a4228d7ebabae87f856b5"
+	}
+	]}

@@ -25,7 +25,18 @@
         <![endif]-->
 
 		<style>
-		/*.thread_img{width:100%;} */
+		.siderbar_title {
+			padding: 0 0 0 10px;
+			color: #fff;
+			font-size: 14px;
+			background-image: -webkit-linear-gradient(top,#6295C8,#407BB7);
+			line: 31px;
+			line-height: 31px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+			border-left: 1px solid #DCDCDC;
+			border-right: 1px solid #DCDCDC;
+		}
 		</style>
 
     </head>
@@ -41,40 +52,21 @@
 		
 
         
-
-        <script id="tpl-duoshuo" type="text/template">
-
-            <h3>
-                最新评论
-            </h3>
-            <ul id="ds-recent-comments" data-show-title="0" data-excerpt-length="70"
-            data-num-items="10">
-                {{#messages}}
-                <li class="ds-comment ds-show-avatars" data-post-id="{{data-post-id}}">
-                    <div class="ds-avatar">
-                        <a rel="nofollow author" target="_blank" href="{{author_url}}"
-                        title="{{author_name}}">
-                            <img src="{{avatar_url}}" alt="{{author_name}}"
-                            style="width:32px;height:32px">
-                        </a>
-                    </div>
-                    <div class="ds-meta">
-                        <a rel="nofollow author" target="_blank" href="{{author_url}}">
-                            {{author_name}}
-                        </a>
-                        <span class="ds-time" datetime="{{created_at}}" title="">
-
-                        </span>
-                    </div>
-                    <a class="ds-excerpt" title="Redirect 中的评论" href="#show/{{thread_key}}">
-                        {{message}}
-                    </a>
-                </li>
-                 {{/messages}}
-
-            </ul>
-
-        </script>
+        
+        <script id="tpl-recruitment" type="text/template">
+			<section>
+				<header class="siderbar_title">猎头招聘</header>
+				<div class="well">
+					{{#jobs}}
+					<p><a href="{{url}}" target="{{uuid}}"><strong>{{name}}</strong></a>&nbsp;&nbsp;【{{place}}】</p>
+					<p>薪资：{{salary}}</p>
+					<p>公司：{{company}}</p>
+					<div class="line_dashed"></div>
+					{{/jobs}}
+				</div>
+			</section>
+		</script>
+        
 
         <div class="main-body">
             <div class="navbar navbar-fixed-top">
@@ -115,38 +107,7 @@
                         </div>
                     </div>
 
-					<div class="span3">
-                        <div class="well personal">
-			<h3>个人资料</h3>
-            <img src="/images/me.jpg" class="thumbnail" style="border-radius:50%; overflow:hidden;">
-			<br>
-			<h6>peseus，毕业于西安交通大学。<br>程序员@深圳。<br>喜欢乒乓球，读书，游泳，爬山。<br>就职于鹅厂，后台开发。<br>常用开发语言 : C++ / PHP / JS 。<br>关注架构设计与实现方案<br><br>联系我 : peseus#qq.com</h6>
-        </div>
-						<div class="well sidebar-nav">
-            <ul class="nav nav-list">
-	                <li class="nav-header">2014-07</li>
-	                	<li><a href="/article/2014-07-01_linkage.html">gcc/c++链接极简实践</a></li>
-	                <li class="nav-header">2014-06</li>
-	                	<li><a href="/article/2014-06-13_precision_proc_time.html">如何查看进程精确启动时间</a></li>
-	                <li class="nav-header">2014-05</li>
-	                	<li><a href="/article/2014-05-27_join-git.html">加入github</a></li>
-            </ul>
-        </div>
-                        <div class="well sidebar-comment">
-                        </div>
-                        <div class="well sidebar-users">
-                        </div>
-						<div class="well sidebar-links">
-			<h3>友情链接</h3>
-            <ul class="nav nav-list">
-                <li><a href="http://www.tonizhao.tk/" target="_blank">tonizhao</a></li>
-                <li><a href="http://blog.csdn.net/tenfyguo/" target="_blank">tenfyguo的技术专栏</a></li>
-                <li><a href="http://lefengyang.github.io/" target="_blank">羊君碎碎念</a></li>
-                <li><a href="http://wanwan.tonizhao.tk/" target="_blank">婉婉作品集</a></li>
-            </ul>
-        </div>
-                    </div>
-
+					<div class="span3" id="div-siderbar"></div>
                 </div>
                 <hr>
                 <footer role="contentinfo">
@@ -170,14 +131,11 @@
         <script src="/js/showdown-min.js"></script>
         <script src="/js/highlight/highlight.pack.js"></script>
         <script src="/js/jquery.scrollUp.min.js"></script>
-        <script src="/js/blog_static.js?v=3"></script>
+        <script src="/js/blog_static.js?v=4"></script>
+        <script type="text/javascript" src="/js/oss/recruitment_loader.js"></script>
 
         <script>
            var duoshuoQuery = {short_name:"peseus"};
-           if (typeof DUOSHUO !== 'undefined'){
-
-                DUOSHUO.RecentComments('.ds-recent-comments');
-            }
         </script>
         <script src="http://static.duoshuo.com/embed.js"></script>
 		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=34713505" charset="UTF-8"></script>
