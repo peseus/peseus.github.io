@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+		<script type="text/javascript">
+			var _speedMark = new Date();
+		</script>
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/favicon.png" rel="shortcut icon">
+
+        <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/css/skin.css" rel="stylesheet">
+
+        <!-- Highlight js stylesheet file -->
+        <link rel="stylesheet" type="text/css" href="css/default.css">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="/js/googlecode/html5.js"></script>
+        <![endif]-->
+
+		<style>
+		.siderbar_title {
+			padding: 0 0 0 10px;
+			color: #fff;
+			font-size: 14px;
+			background-image: -webkit-linear-gradient(top,#6295C8,#407BB7);
+			line: 31px;
+			line-height: 31px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+			border-left: 1px solid #DCDCDC;
+			border-right: 1px solid #DCDCDC;
+		}
+		</style>
+
+    </head>
+
+    <body>
+        
+
+
+        
+
+		
+
+		
+
+        
+        
+        <script id="tpl-recruitment" type="text/template">
+			<section>
+				<header class="siderbar_title">猎头招聘</header>
+				<div class="well">
+					{{#jobs}}
+					<p><a href="{{url}}" target="{{uuid}}"><strong>{{name}}</strong></a>&nbsp;&nbsp;【{{place}}】</p>
+					<p>薪资：{{salary}}</p>
+					<p>公司：{{company}}</p>
+					<div class="line_dashed"></div>
+					{{/jobs}}
+				</div>
+			</section>
+		</script>
+        
+
+        <div class="main-body">
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                <li><a href="/cat-index/page-1.html">首页</a></li>
+                                <li><a href="/cat-tech/page-1.html">技术</a></li>
+                                <li><a href="/cat-other/page-1.html">其他</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="container-fluid">
+
+                <div class="row-fluid">
+
+                    <div class="span9">
+                        <div class="row-fluid article-content"><h1 id="bug">拷贝构造函数与赋值表达式-我的知识BUG</h1>
+
+<h2 id="11">1.1    背景</h2>
+
+<p>前几天看dfwang的代码，觉得其中的涉及到构造函数、拷贝构造函数和赋值操作的代码有些问题。再细想想觉得我的已有知识也有问题，于是就简单实践了一下。发现自己还真错了。</p>
+
+<h2 id="12">1.2    构造函数和表达式</h2>
+
+<p>构造函数这个概念，我是大二的时候在交大钱学森读书馆拿着一本《C++编程基础教程》学的。当时误以为有三种构造函数：构造函数（带参数和不带参数）、拷贝构造函数和<b>赋值构造函数</b>。 <br>
+当时是这样认为的：  </p>
+
+<pre><code>class ClassName;
+ClassName objA;
+ClassName objB(objA);
+ClassName objC = objA;
+</code></pre>
+
+<p>objB是调用拷贝构造函数构造的，而objC是调用赋值构造函数构造的。两者都不会调用不带参数的默认构造函数。通过今天的实践，发现错的还挺离谱的。其实不存在所谓<b>赋值构造函数</b>(奇怪的是赋值构造函数这个关键字在百度上面也能搜索到)，只有<b>赋值函数</b>。</p>
+
+<h3 id="121">1.2.1    链接参数</h3>
+
+<ul>
+<li>-L <br>
+-L用于增加链接库的查找目录</li>
+<li>-I <br>
+-l 用于指定库文件，-lx表示链接libx.so或者libx.a</li>
+<li>-static <br>
+使用静态库。使用了该参数，没有静态库，即便是有动态库也不会使用动态库</li>
+<li>-fPIC <br>
+64位下编译静态库要用到</li>
+<li>-Wl,-Bstatic和-Wl,-Bdynamic <br>
+-Wl,-Bstatic参数后的链接库使用静态链接； <br>
+-Wl,-Bdynamic参数后的链接库使用动态链接； <br>
+两者合用就可以实现同时使用动态库和静态库。如果使用了-Wl,-Bstatic，那么其后面必须后-Wl,-Bdynamic，否则系统库可能会链接不了而报错。</li>
+</ul>
+
+<h3 id="122">1.2.2    默认搜索库路径</h3>
+
+<p>gcc默认搜索/lib，/usr/lib下的库，也有系统也会默认搜索/usr/local/lib下面的库</p>
+
+<h3 id="123">1.2.3    动态库优先于静态库</h3>
+
+<p>如果有同名的静态库和静态库（后缀前的都相同，如libx.so和libx.a是同名的），那么会链接动态库。可以使用-static、-Wl,-Bstatic和-Wl,-Bdynamic来改变。</p>
+
+<h3 id="124">1.2.4    被依赖的库放在后面</h3>
+
+<p>如果链接的库之间有依赖关系，那么被依赖的静态库要放在依赖它的库后面。例如libb.so或者libb.a依赖liba.a，那么liba.a要放在libb.so或者libb.a后面。</p>
+
+<h2 id="13">1.3    工具</h2>
+
+<h3 id="131nm">1.3.1    nm</h3>
+
+<p>列出文件中的符号。用nm可以看出定义的和未定义的符号。 <br>
+<img src="../images/gcc_linkage/nm_description.png" alt="查看未定义符号" title=""></p>
+
+<h3 id="132ldd">1.3.2    ldd</h3>
+
+<p>显示共享库(含可执行文件)的依赖情况。通过ldd可以知道共享库依赖哪些文件 <br>
+<img src="../images/gcc_linkage/ldd_description.png" alt="查看依赖" title=""></p>
+
+<h2 id="14">1.4    实践</h2>
+
+<p>用极简的例子实践，可以更快速和深入理解这些基础的知识，更好的掌握工具的使用。</p>
+
+<h3 id="141">1.4.1    练习程序如下：</h3>
+
+<p>依赖关系： <br>
+main =&gt; b =&gt; a <br>
+main/b/a与c没有任何依赖关系 <br>
+main/makefile定义了很多例子，用来联系上面提到的基础知识 <br>
+<img src="../images/gcc_linkage/linkage_1.4.1.png" alt="" title=""></p>
+
+<h3 id="142">1.4.2    被依赖的库要放在依赖它的库后面</h3>
+
+<p>目标positon<em>error</em>linkage<em>main把liba.a写在前面，将导致无法链接 <br>
+<img src="../images/gcc_linkage/linkage_1.4.2-1.png" alt="" title=""> <br>
+make positon</em>error<em>linkage</em>main运行结果： <br>
+<img src="../images/gcc_linkage/linkage_1.4.2-2.png" alt="" title=""> <br>
+目标static<em>linkage</em>main和目标positon<em>error</em>linkage<em>main的区别在于liba.a和libb.a的顺序调转 <br>
+<img src="../images/gcc_linkage/linkage_1.4.2-3.png" alt="" title=""> <br>
+make static</em>linkage<em>main： <br>
+<img src="../images/gcc_linkage/linkage_1.4.2-4.png" alt="" title=""> <br>
+./static</em>linkage_main运行结果： <br>
+<img src="../images/gcc_linkage/linkage_1.4.2-5.png" alt="" title="">  </p>
+
+<h3 id="143">1.4.3    动态库优先于静态库链接</h3>
+
+<p>目标default<em>linkage</em>main依赖库文件a和库文件b。a目录和b目录同时存在动态库和静态库。 <br>
+<img src="../images/gcc_linkage/linkage_1.4.3-1.png" alt="" title=""> <br>
+make default<em>linkage</em>main： <br>
+<img src="../images/gcc_linkage/linkage_1.4.3-2.png" alt="" title=""> <br>
+查看default<em>linkage</em>main的依赖关系： <br>
+<img src="../images/gcc_linkage/linkage_1.4.3-3.png" alt="" title=""> <br>
+说明链接的是动态库  </p>
+
+<h3 id="144">1.4.4    使用静态链接</h3>
+
+<p>目标static<em>linkage</em>main使用静态链接。使用静态链接后，即便是存在动态库，但不存在动态库，也会链接不上 <br>
+删除liba.so和libb.so，然后： <br>
+make static<em>linkage</em>main： <br>
+<img src="../images/gcc_linkage/linkage_1.4.4-1.png" alt="" title="">  </p>
+
+<h3 id="145">1.4.5    混用静态链接和动态链接</h3>
+
+<p>目标mix<em>linkage</em>main混用动态链接和静态链接，会链接静态库liba.a和动态库libb.so <br>
+<img src="../images/gcc_linkage/linkage_1.4.5-1.png" alt="" title=""> <br>
+运行make mix<em>linkage</em>main <br>
+查看mix<em>linkage</em>main的依赖关系 <br>
+<img src="../images/gcc_linkage/linkage_1.4.5-2.png" alt="" title=""> <br>
+说明只动态链接了b库，而a库是静态链接的  </p>
+
+<h3 id="146nm">1.4.6    使用nm查看未定义的函数</h3>
+
+<p>库b依赖库a的func<em>a函数，通过nm可以看出来libb.a和libb.so中有一个未定义的符号func</em>a： <br>
+<img src="../images/gcc_linkage/linkage_1.4.6-1.png" alt="" title="">  </p>
+
+<h3 id="147">1.4.7    其他</h3>
+
+<p>main/makefile中还定义了其他的目标供自行练习</p>
+
+<h3 id="148">1.4.8 附件</h3>
+
+<p>附件是<a href="../download/linkage.20140623.tar.gz">练习例子</a>，下载后可以自行实践。</p></div>
+                        <div class="row-fluid pagebar">
+                        </div>
+                    </div>
+
+					<div class="span3" id="div-siderbar"></div>
+                </div>
+                <hr>
+                <footer role="contentinfo">
+                <p>© 2014 粤ICP备14037554号 Powered by <a href="https://github.com/peseus/peseus.github.io" target="_blank">peseus</a>
+                 </p>
+                </footer>
+            </div><!--/.fluid-container-->
+        </div>
+
+        <a class="go_top hidden-phone hidden" href="#top" style="display: inline; ">
+            <i class="icon icons_go_top"></i>
+        </a>
+
+
+
+        <script src="/js/json2.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/underscore-min.js"></script>
+        <script src="/js/mustache.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/showdown-min.js"></script>
+        <script src="/js/highlight/highlight.pack.js"></script>
+        <script src="/js/jquery.scrollUp.min.js"></script>
+        <script src="/js/blog_static.js?v=4"></script>
+        <script type="text/javascript" src="/js/oss/recruitment_loader.js"></script>
+
+        <script>
+           var duoshuoQuery = {short_name:"peseus"};
+        </script>
+        <script src="http://static.duoshuo.com/embed.js"></script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=34713505" charset="UTF-8"></script>
+    </body>
+
+</html>

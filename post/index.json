@@ -13,6 +13,10 @@
 		}
 	],
 	"articles" : [{
+			"title": "拷贝构造函数与赋值表达式-我的知识BUG", 
+			"file": "2014-07-28_ctor_assignment",
+			"cate": "tech"
+		}, {
 			"title": "gcc/c++链接极简实践", 
 			"file": "2014-07-01_linkage",
 			"cate": "tech"

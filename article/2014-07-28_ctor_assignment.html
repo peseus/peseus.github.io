@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+		<script type="text/javascript">
+			var _speedMark = new Date();
+		</script>
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/favicon.png" rel="shortcut icon">
+
+        <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/css/skin.css" rel="stylesheet">
+
+        <!-- Highlight js stylesheet file -->
+        <link rel="stylesheet" type="text/css" href="css/default.css">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="/js/googlecode/html5.js"></script>
+        <![endif]-->
+
+		<style>
+		.siderbar_title {
+			padding: 0 0 0 10px;
+			color: #fff;
+			font-size: 14px;
+			background-image: -webkit-linear-gradient(top,#6295C8,#407BB7);
+			line: 31px;
+			line-height: 31px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+			border-left: 1px solid #DCDCDC;
+			border-right: 1px solid #DCDCDC;
+		}
+		</style>
+
+    </head>
+
+    <body>
+        
+
+
+        
+
+		
+
+		
+
+        
+        
+        <script id="tpl-recruitment" type="text/template">
+			<section>
+				<header class="siderbar_title">猎头招聘</header>
+				<div class="well">
+					{{#jobs}}
+					<p><a href="{{url}}" target="{{uuid}}"><strong>{{name}}</strong></a>&nbsp;&nbsp;【{{place}}】</p>
+					<p>薪资：{{salary}}</p>
+					<p>公司：{{company}}</p>
+					<div class="line_dashed"></div>
+					{{/jobs}}
+				</div>
+			</section>
+		</script>
+        
+
+        <div class="main-body">
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                <li><a href="/cat-index/page-1.html">首页</a></li>
+                                <li><a href="/cat-tech/page-1.html">技术</a></li>
+                                <li><a href="/cat-other/page-1.html">其他</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="container-fluid">
+
+                <div class="row-fluid">
+
+                    <div class="span9">
+                        <div class="row-fluid article-content"><h1 id="bug">拷贝构造函数与赋值表达式-我的知识BUG</h1>
+
+<h2 id="11">1.1    背景</h2>
+
+<p>前几天看dfwang的代码，觉得其中的涉及到构造函数、拷贝构造函数和赋值操作的代码有些问题。再细想想觉得我的已有知识也有问题，于是就简单实践了一下。发现自己还真错了。</p>
+
+<h2 id="12">1.2    构造函数和表达式</h2>
+
+<p>构造函数这个概念，我是大二的时候在交大钱学森读书馆拿着一本《C++编程基础教程》学的。当时误以为有三种构造函数：构造函数（带参数和不带参数）、拷贝构造函数和<b>赋值构造函数</b>。 <br>
+当时是这样认为的：  </p>
+
+<pre><code>class ClassName;
+ClassName objA;
+ClassName objB(objA);
+ClassName objC = objA;
+</code></pre>
+
+<p>objB是调用拷贝构造函数构造的，而objC是调用赋值构造函数构造的。两者都不会调用不带参数的默认构造函数。通过今天的实践，发现错的还挺离谱的。其实不存在所谓<b>赋值构造函数</b>(奇怪的是赋值构造函数这个关键字在百度上面也能搜索到)，只有<b>赋值函数</b>。</p>
+
+<h2 id="12">1.2 拷贝构造函数与赋值函数的区别</h2>
+
+<p>拷贝构造函数是通过已有对象来构造新对象；赋值函数是先构造对象，然后通过已有对象来改写对象。</p>
+
+<pre><code>class ClassName;
+ClassName objA;
+ClassName objB(objA);
+ClassName objC = objA;
+ClassName objD;
+objD = objA;
+</code></pre>
+
+<p>如上代码，objB和objC都是调用的拷贝构造函数；而objD是先调用构造函数（不带参数的构造函数），然后再用objA改写objD。</p></div>
+                        <div class="row-fluid pagebar">
+                        </div>
+                    </div>
+
+					<div class="span3" id="div-siderbar"></div>
+                </div>
+                <hr>
+                <footer role="contentinfo">
+                <p>© 2014 粤ICP备14037554号 Powered by <a href="https://github.com/peseus/peseus.github.io" target="_blank">peseus</a>
+                 </p>
+                </footer>
+            </div><!--/.fluid-container-->
+        </div>
+
+        <a class="go_top hidden-phone hidden" href="#top" style="display: inline; ">
+            <i class="icon icons_go_top"></i>
+        </a>
+
+
+
+        <script src="/js/json2.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/underscore-min.js"></script>
+        <script src="/js/mustache.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/showdown-min.js"></script>
+        <script src="/js/highlight/highlight.pack.js"></script>
+        <script src="/js/jquery.scrollUp.min.js"></script>
+        <script src="/js/blog_static.js?v=4"></script>
+        <script type="text/javascript" src="/js/oss/recruitment_loader.js"></script>
+
+        <script>
+           var duoshuoQuery = {short_name:"peseus"};
+        </script>
+        <script src="http://static.duoshuo.com/embed.js"></script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=34713505" charset="UTF-8"></script>
+    </body>
+
+</html>
