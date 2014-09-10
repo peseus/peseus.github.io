@@ -76,7 +76,13 @@
                 <div class="row-fluid">
 
                     <div class="span9">
-                        <div class="row-fluid article-content"><h1 id="bug">拷贝构造函数与赋值表达式-我的知识BUG</h1>
+                        <div class="row-fluid article-content"><h1 id="">一行代码解决局部资源管理-宏在资源释放的应用</h1>
+
+<h2 id="11">1.1    背景</h2>
+
+<p>C++中，如果函数抛出异常，或者存在多路分支返回的场景下，资源的释放是一个比较麻烦的事情。一方面要写较多的代码覆盖所有场景，另一方面可能存在疏漏的可能。利用构造析构函数来进行局部资源的释放是一个比较好的方案。但不足之处在于灵活性不够，即便是泛型化，也是灵活性不够的。借鉴宏的能力，可以推广这种灵活性。</p>
+
+<h2 id="12">1.2    设计方法</h2><br><p><a title="" class="btn btn-primary pull-left" href="/article/2014-09-10_auto_free_macro.html">继续阅读  →</a> </p><br> <br><div class="line_dashed"></div><h1 id="bug">拷贝构造函数与赋值表达式-我的知识BUG</h1>
 
 <h2 id="11">1.1    背景</h2>
 
@@ -133,6 +139,8 @@
         </div>
 						<div class="well sidebar-nav">
             <ul class="nav nav-list">
+	                <li class="nav-header">2014-09</li>
+	                	<li><a href="/article/2014-09-10_auto_free_macro.html">一行代码解决局部资源管理-宏在资源释放的应用</a></li>
 	                <li class="nav-header">2014-07</li>
 	                	<li><a href="/article/2014-07-28_ctor_assignment.html">拷贝构造函数与赋值表达式-我的知识BUG</a></li>
 	                	<li><a href="/article/2014-07-01_linkage.html">gcc/c++链接极简实践</a></li>

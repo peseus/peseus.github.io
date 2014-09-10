@@ -13,6 +13,10 @@
 		}
 	],
 	"articles" : [{
+			"title": "一行代码解决局部资源管理-宏在资源释放的应用", 
+			"file": "2014-09-10_auto_free_macro",
+			"cate": "tech"
+		}, {
 			"title": "拷贝构造函数与赋值表达式-我的知识BUG", 
 			"file": "2014-07-28_ctor_assignment",
 			"cate": "tech"
